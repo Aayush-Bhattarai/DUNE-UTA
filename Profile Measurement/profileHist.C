@@ -3,7 +3,7 @@
 void profileHist()
 {
 	//Creating Histogram
-	TH1D* hist = new TH1D("hist", "; Length [cm]; # of Entries", 20, 220, 222); //Bin number = (222-220)/0.1 = 20 
+	TH1D* hist = new TH1D("hist", "Profiles Measurements; Length [cm]; # of Entries", 20, 220, 222); //Bin number = (222-220)/0.1 = 20 
 	
 	Double_t data; //Profile length 
 	ifstream fInput;
@@ -23,6 +23,7 @@ void profileHist()
 
 	//Drawing Histogram
 	TCanvas* c1 = new TCanvas();
+	c1->SetTicks();
 	gStyle->SetOptStat(11111111); //more stats
 	hist->Draw();
 	hist->Fit("gaus");
